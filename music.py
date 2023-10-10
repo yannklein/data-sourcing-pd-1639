@@ -1,14 +1,14 @@
 import requests
 
 def fetch_lyrics(artist, title):
-    url = f"https://lyrics.lewagon.ai/search?artist={artist}&title={title}"
+    url = "https://lyrics.lewagon.ai/search"
     try:
-        response = requests.get(url)
-        data = response.json()
+        data = requests.get(url, params={"artist": artist, "title": title}).json()
         return data['lyrics']
     except:
-        return 'No Data'
-
-# all the code in line below is executed when running `python music.py` but not when file is imported
+        return "N/A"
+# line 12 is executed when running "python music.py", but not when importing music.py
 if __name__ == "__main__":
-    print(fetch_lyrics("The Beatles", "Yesterday"))
+    artist_name = "Ed Sheeran"
+    song_title = "Shape of you"
+    print(fetch_lyrics(artist_name, "Shape of me"))
